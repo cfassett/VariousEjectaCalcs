@@ -396,8 +396,9 @@ def computeCDFejke(listofcrats):
 def ethicknessmap(Crater):
     R=np.linspace(Crater.diam/2.0+0.1,5.0*Crater.diam,450)
     for curr in R:
-        print curr, Crater.ejectamasspersqm(curr,zonewidth=0.2)/2700.0  #2700 to convert to ht in m
-        
+        #print curr, Crater.ejectamasspersqm(curr,zonewidth=0.2)/2700.0  #2700 to convert to ht in m
+        #convert curr to range from rim by subtracting a radius
+        print str(curr-(Crater.diam/2.0))+","+str(Crater.ejectamasspersqm(curr,zonewidth=0.2)/2700.0) #2700 to convert to ht in m
     
     
     
@@ -447,6 +448,7 @@ def main():
         
             
         newcrat=Crater(diam=100.0)
+        print "range-from-rim, thickness"
         ethicknessmap(newcrat)
         #print newcrat.TotalEjectaMassGtEqVelTable()
       
